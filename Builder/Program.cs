@@ -11,28 +11,9 @@ namespace Builder
         // TODO: Create a RPG character builder
         // class, genre, skills, weapons, name, spells (if it's a mage)
 
-        //static void Main(string[] args)
-        //{
-        //    Console.WriteLine("Let's start the construction!");
-
-        //    var builder = new HouseBuilder()
-        //        .BuildWalls(Materials.Iron)
-        //        .BuildDoors(Materials.Stone);
-
-        //    builder.Reset();
-
-        //    var customHouse = builder.Build();
-
-        //    var director = new Director(builder);
-        //    var castle = director.BuildCastle();
-
-        //    Console.WriteLine(customHouse);
-        //    Console.WriteLine(castle);
-        //}
-
         static void Main(string[] args)
         {
-            Console.WriteLine("Let's start the construction!");
+            Console.WriteLine("Let's start building your character!");
 
             var characterWeapons = new string[] { "Long Spear", "Two hands Sword" };
 

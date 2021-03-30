@@ -6,6 +6,7 @@
         ICharacterBuilder SetAge(int age);
         ICharacterBuilder SetClass(CharacterClasses @class);
         ICharacterBuilder SetGender(Gender gender);
+        ICharacterBuilder AddWeapon(string weapon);
         ICharacterBuilder AddWeapon(string[] weapons);
     }
 }

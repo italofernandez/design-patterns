@@ -45,5 +45,10 @@ namespace Builder.Models.Character.Builders
         {
             throw new NotImplementedException();
         }
+
+        public ICharacterBuilder AddWeapon(string weapon)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
