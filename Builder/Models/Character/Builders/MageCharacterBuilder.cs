@@ -1,54 +1,54 @@
-﻿using System;
+﻿using Builder.Models.Character.Builders.Interfaces;
+using Builder.Models.Character.Enums;
 
 namespace Builder.Models.Character.Builders
 {
-    public class MageCharacterBuilder : ICharacterBuilder
+    public class MageCharacterBuilder : IMageCharacterBuilder
     {
-        public Character Product { get; set; }
+        private Character Character;
+
+        public MageCharacterBuilder()
+            => Reset();
 
         public Character Build()
         {
-            throw new NotImplementedException();
+            Character.Class = CharacterClasses.Mage;
+            return Character;
         }
 
-        public void Reset()
+        public void Reset() 
+            => Character = new Character();
+
+        public IMageCharacterBuilder AddSpell(string spell)
         {
-            throw new NotImplementedException();
+            if(!string.IsNullOrEmpty(spell))
+                Character.Spells.Add(spell);
+            return this;
         }
 
-        public ICharacterBuilder AddSpell(string spellName)
+        public IMageCharacterBuilder AddSpell(string[] spells)
         {
-            throw new NotImplementedException();
+            if (spells.Length > 0)
+                Character.Spells.AddRange(spells);
+            return this;
         }
 
-        public ICharacterBuilder SetName(string name)
+        public IMageCharacterBuilder SetAge(int age)
         {
-            throw new NotImplementedException();
+            Character.Age = age;
+            return this;
         }
 
-        public ICharacterBuilder SetAge(int age)
+        public IMageCharacterBuilder SetGender(Gender gender)
         {
-            throw new NotImplementedException();
+            Character.Gender = gender;
+            return this;
         }
 
-        public ICharacterBuilder SetClass(CharacterClasses @class)
+        public IMageCharacterBuilder SetName(string name)
         {
-            throw new NotImplementedException();
-        }
-
-        public ICharacterBuilder SetGender(Gender gender)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ICharacterBuilder AddWeapon(string[] weapons)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ICharacterBuilder AddWeapon(string weapon)
-        {
-            throw new NotImplementedException();
+            Character.Name = name;
+            return this;
         }
     }
 }
