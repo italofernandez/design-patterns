@@ -16,6 +16,7 @@ namespace Builder
 
         static void BuildCharactersExample()
         {
+            //We can use the same 'build API' to build different types of characters
             Console.WriteLine("Character examples ====================");
 
             var genericCharacter = new GenericCharacterBuilder()
@@ -45,6 +46,7 @@ namespace Builder
 
             Console.WriteLine("# MSSQL Server Connection String");
             var microsoftSqlConnectionString = new MSSqlConnectionStringBuilder()
+                .TrustedConnection(true)
                 .WithServerAddress("192.168.0.12")
                 .WithCredentials(username: "root", password: "123")
                 .WithPort("9999")
@@ -58,6 +60,7 @@ namespace Builder
                 .WithServerAddress("192.168.0.12")
                 .WithPort("9999")
                 .WithCredentials(username: "root", password: "123")
+                .WithDatabaseName("mongo_dev")
                 .Build();
 
             Console.WriteLine(mongoDbConnectionString);

@@ -1,4 +1,4 @@
-﻿namespace Builder.Models.ConnectionString
+﻿namespace Builder.Models.ConnectionString.Builders.Interfaces
 {
     public interface IConnectionStringBuilder : IBuilder<string>
     {

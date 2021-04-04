@@ -1,4 +1,6 @@
-﻿namespace Builder.Models.ConnectionString
+﻿using Builder.Models.ConnectionString.Builders.Interfaces;
+
+namespace Builder.Models.ConnectionString
 {
     public class MSSqlConnectionStringBuilder : IConnectionStringBuilder
     {
@@ -8,7 +10,7 @@
         private string databaseName;
         private string username;
         private string password;
-
+        
         public string Build()
         {
             if (!string.IsNullOrEmpty(serverAddressPort))
@@ -22,6 +24,11 @@
             databaseName = string.Empty;
             username = string.Empty;
             password = string.Empty;
+        }
+
+        public MSSqlConnectionStringBuilder TrustedConnection(bool trustedConnection)
+        {
+            throw new System.NotImplementedException();
         }
 
         public IConnectionStringBuilder WithCredentials(string username, string password)

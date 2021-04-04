@@ -1,24 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Builder.Models.ConnectionString.Builders.Interfaces;
 
 namespace Builder.Models.ConnectionString
 {
     public class MongoDbConnectionStringBuilder : IConnectionStringBuilder
     {
-        private const string connectionString = @"mongodb://{0}:{1}@{2}";
+        private const string connectionString = @"mongodb://{0}:{1}@{2}{3}";
         private string serverAddress;
         private string serverAddressPort;
         private string username;
         private string password;
+        private string authSource;
 
         public string Build()
         {
             if (!string.IsNullOrEmpty(serverAddressPort))
                 serverAddress += $":{serverAddressPort}";
-            return string.Format(connectionString, username, password, serverAddress, serverAddressPort);
+            return string.Format(connectionString, username, password, serverAddress, authSource);
         }
 
         public void Reset()
@@ -38,7 +35,10 @@ namespace Builder.Models.ConnectionString
 
         public IConnectionStringBuilder WithDatabaseName(string databaseName)
         {
-            throw new NotImplementedException();
+            if(!string.IsNullOrEmpty(databaseName))
+                authSource = $"?authSource={databaseName}";
+
+            return this;
         }
 
         public IConnectionStringBuilder WithServerAddress(string serverAddress)
